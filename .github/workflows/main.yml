@@ -18,7 +18,7 @@ jobs:
     steps:
       # 소스 코드 체크아웃
 	    - name: Checkout Code
-        uses: actions/checkout@v4
+          uses: actions/checkout@v4
 
       # Docker Hub 로그인
       - name: Login to Docker Hub
