@@ -8,7 +8,7 @@ WORKDIR /app
 
 # Node.js 바이너리들을 PATH에 추가하여 npm, npx 등의 명령어를 쉽게 사용할 수 있도록 설정
 # /app/node_modules/.bin 경로를 시스템 PATH 앞부분에 추가
-ENV PATH /app/node_modules/.bin:$PATH
+ENV PATH=/app/node_modules/.bin:$PATH
 
 # package.json과 package-lock.json을 먼저 복사 (Docker 레이어 캐싱 최적화)
 # package-lock.json이 있다면 정확한 버전의 의존성을 보장
@@ -31,7 +31,7 @@ RUN npm run build
 
 # 두 번째 단계: Nginx 웹서버 단계
 # 안정성을 위해 특정 버전의 Nginx Alpine 이미지 사용
-FROM nginx:1.25-alpine
+FROM nginx:1.27-alpine
 
 # 보안과 성능을 위해 비-루트 사용자로 실행할 수 있도록 설정
 RUN addgroup -g 1001 -S nodejs && \
